@@ -1,11 +1,11 @@
 
-const {create, getSalon,updateSalon,getUserByEmail} = require('./salon_service');
+const {create, getSalon,getUserByEmail} = require('./user_service');
 const { genSaltSync, hashSync ,compareSync } = require('bcrypt');
 const { sign } = require('jsonwebtoken');
 var bcrypt = require('bcrypt');
 
 module.exports = {
-    createSalon: (req, res) => {
+    createUser: (req, res) => {
         const body = req.body;
         console.log(req.body);
         //-----------salon password encryption----------
@@ -28,25 +28,7 @@ module.exports = {
         });
     },
     
-    updateSalon: (req, res) => {
-        const body = req.body;
-        updateSalon(body,(err,results) => {
-            if(err){
-                console.log(err);
-                return;
-            }
-            if(!results){
-                return res.json({
-                    success: 0,
-                    message: "Failed to update user"
-                });
-            }
-            return res.json({
-                success: 1,
-                message: "updated successfully"
-            });
-        });
-    },
+   
     getSalon: (req, res) => {
         getSalon((err,results) => {
             if(err){

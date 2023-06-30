@@ -37,22 +37,7 @@ module.exports = {
         );
 
     },
-    updateSalon: (data, callback) => {
-        pool.query(
-            'update salon set description=? where salon_id=?',
-            [
-                data.description,
-              
-                data.id
-            ],
-            (error, results, fields) => {
-                if(error){
-                    return callback(error);
-                }
-                return callback(null, results);
-            }
-        );
-    },
+    
 
     getUserByEmail : (email,callBack)=>{
         console.log(email);
